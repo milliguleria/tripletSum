@@ -7,27 +7,23 @@
 
 using namespace std;
 
-void swap(int* first, int* second) 
-{ 
-    int temp = *first; 
-    *first = *second; 
-    *second = temp; 
-} 
-
-
 int partition(int* array, int low, int high){
 	int pivot = array[high];
 	int temp = (low-1);
+	int t;
 	
 	for(int i = low; i<= high-1; i++){
 		if(array[i]<=pivot){
 			temp++;
-			swap(&array[temp], &array[i]);
+	        	t= array[i];
+    			array[i]=pivot;
+   		        pivot=t;
 		}
 	}
-	swap(&array[temp+1], &array[high]);
+	t=array[temp+1]; 
+    	array[temp+1]=array[high]; 
+    	array[high]=t; 
 	return(temp+1);
-	
 }
 
 void quickSort(int* array, int low, int high){
